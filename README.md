@@ -2,3 +2,90 @@
 #Collaborative Coding Project for our team using git and vs code
 #Angelique Hemor and Rica Farquerabao
 
+print("========================================")
+print("      WELCOME TO LICA PARADISE")
+print("       POS ORDERING SYSTEM")
+print("========================================")
+
+# Lists to store customer orders
+ordered_products = []
+quantities = []
+prices = []
+subtotals = []
+
+print("PRODUCT MENU")
+print("----------------------------------------")
+print("[1] Burger     - PHP 50.00")
+print("[2] Fries      - PHP 35.00")
+print("[3] Soft Drink - PHP 25.00")
+print("----------------------------------------")
+
+# Loop for ordering
+while True:
+    choice = int(input("Enter product number (1-3): "))
+
+    if choice == 1 or choice == 2 or choice == 3:
+        quantity = int(input("Enter quantity: "))
+        if quantity > 0:
+            # Check which product was chosen
+            if choice == 1:
+                name = "Burger"
+                price = 50.00
+            elif choice == 2:
+                name = "Fries"
+                price = 35.00
+            elif choice == 3:
+                name = "Soft Drink"
+                price = 25.00
+            subtotal = price * quantity
+
+
+            # Save to lists
+            ordered_products.append(name)
+            quantities.append(quantity)
+            prices.append(price)
+            subtotals.append(subtotal)
+
+            print()
+            print("Added:", name, "x", quantity)
+        else:
+            print()
+            print("Invalid quantity!")
+    else:
+        print()
+        print("Invalid product number!")
+
+    print()
+    another = input("Order another product? (yes/no): ").lower()
+    print()
+
+    if another != "yes":
+        break
+
+# Receipt
+print("========================================")
+print("        RECEIPT")
+print("      MINI STORE")
+print("========================================")
+print("Product       Qty   Price   Subtotal")
+print("------------------------")
+total = 0
+
+for i in range(len(ordered_products)):
+    if ordered_products[i] == "Burger":
+        print(ordered_products[i], "      ", quantities[i], "   ", prices[i], "   ", subtotals[i])
+    elif ordered_products[i] == "Fries":
+        print(ordered_products[i], "       ", quantities[i], "   ", prices[i], "   ", subtotals[i])
+    elif ordered_products[i] == "Soft Drink":
+        print(ordered_products[i], "  ", quantities[i], "   ", prices[i], "   ", subtotals[i])
+
+    total = total + subtotals[i]
+
+
+print("------------------------")
+print("TOTAL AMOUNT:         PHP", total)
+print("========================================")
+print("       THANK YOU FOR YOUR ORDER!")
+print("    SEE YOU IN LICA PARADISE AGAIN!")
+print("========================================")
+
